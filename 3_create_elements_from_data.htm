@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Create elements from data</title>
+</head>
+
+<body>
+
+	<div id="react-container" class="react-container"></div>
+	
+	<script src="https://unpkg.com/react@15.4.2/dist/react.js"> </script>
+	<script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"> </script>
+
+	<script>
+
+		var items = [
+			"1 lb Salmon",
+			"1 cup Pine Nuts",
+			"2 cups Butter Lettuce",
+			"1 Yellow Squash",
+			"1/2 cup Olive Oil",
+			"3 cloves of Garlic"
+		]
+		
+		var content = 
+		
+			React.createElement("ul", {"className": "ingredients"}, 
+				items.map((ingredient, i)=> // ingredient - item of array, i - index
+					React.createElement("li", {key: i}, ingredient))
+			)
+
+		ReactDOM.render(content, document.getElementById('react-container'))
+
+	</script>
+
+</body>
+
+</html>
