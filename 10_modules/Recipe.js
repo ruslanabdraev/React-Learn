@@ -5,7 +5,7 @@ const Recipe = ({name, ingredients, steps})=>
     <section id={name.toLowerCase().replace(/ /g, '-')}>
         <h1>{name}</h1>
             <IngredientsList list={ingredients}></IngredientsList>
-            <Instructions title="Cooking Instructions" strps={steps}></Instructions>
+            <Instructions title="Cooking Instructions" steps={steps}></Instructions>
     </section>
     
 export default Recipe

@@ -1,4 +1,4 @@
-const Ingredient = ({amount, measurement, name})=>
+const Ingredient = ({name, amount, measurement})=>
     <li>
         <span className="amount">{amount}</span>
         <span className="measurement">{measurement}</span>
