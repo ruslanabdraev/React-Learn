@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import PropTypes from 'prop-types'
 
 export default class AddColorForm extends Component {
     constructor(props){
@@ -9,7 +10,8 @@ export default class AddColorForm extends Component {
     submit(e){
         const {_title, _color} = this.refs
         e.preventDefault()
-        alert(`New Color: ${_title.value} ${_color.value}`)
+        // alert(`New Color: ${_title.value} ${_color.value}`)
+        this.props.onNewColor(_title.value, _color.value)
         _title.value = ''
         _color.value = '#000000'
         _title.focus()
@@ -26,4 +28,11 @@ export default class AddColorForm extends Component {
     }
 }
 
+AddColorForm.propTypes = {
+    onNewColor: PropTypes.func
+}
+
+AddColorForm.defaultProps = {
+    onNewColor: f=>f // Это просто функция заместительб возвращающая первый переданный ей аргументю Хотя она ничего не делает JavaScript может ее вызвать без выдачи сообщений
+}
 //export default AddColorForm
