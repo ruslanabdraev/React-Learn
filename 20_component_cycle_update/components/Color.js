@@ -10,8 +10,26 @@ export default class Color extends Component{
     componentWillMount(){
         this.style = { backgroundColor: "#CCC"}
     }
-    componentWillUpdate(){
+    
+    shouldComponentUpdate(nextProps)
+    {
+        const {rating} = this.props
+        return rating !== nextProps.rating
+    }
+    componentWillUpdate(nextProps){
+        const {title, rating} = this.props
         this.style = null
+        this.refs.title.style.backgroundColor = "red"
+        this.refs.title.style.color = "white"
+        alert(`${title}: rating ${rating} -> ${nextProps.rating}`)
+    }
+
+    componentDidUpdate(prevProps){
+        const {title, rating} = this.props
+        const status = (rating > prevProps.rating ) ? 'better' : 'worse'
+        this.refs.title.style.backgroundColor = ""
+        this.refs.title.style.color = "black"
+        //console.log(`${title} is getting ${status}`)
     }
 
     render(){
