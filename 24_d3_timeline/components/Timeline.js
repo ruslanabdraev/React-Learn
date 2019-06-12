@@ -1,17 +1,17 @@
-import * as d3 from 'd3'
+import d3 from 'd3'
 import {Component} from 'react'
 
 export default class Timeline extends Component{
     constructor(props){
         super(props)
-        const {data} = this.props
 
+        this.state = this.prepState(props)
+    }
+
+    prepState({data=[], min=50, max=450}){
         const times = d3.extent(data.map(d=>d.year))
-        const range = [50, 450]
-
-        this.state = {
-            data, times, range
-        }
+        const range = [min, max]
+        return {data, times, range}
     }
 
     componentDidMount(){
