@@ -1,9 +1,11 @@
 import RandomMeUsers from "./RandomMeUsers"
 import CountryDropDown from "./CountryDropDown"
 
+const ComponentRandomMeUsers = RandomMeUsers({results:10})
+
 const App = ()=>
 <div>
-    <RandomMeUsers results={10}></RandomMeUsers>
+    <ComponentRandomMeUsers></ComponentRandomMeUsers>
     <CountryDropDown selected="United States"></CountryDropDown>
 </div>
 
