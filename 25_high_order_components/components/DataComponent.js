@@ -30,7 +30,7 @@ const DataComponent = (ComposedComponent, url) =>
                 <div className="data-component">
                     {(this.state.loading)?
                         <div>Loading...</div>:
-                        <ComposedComponent {...this.state}></ComposedComponent>
+                        <ComposedComponent {...this.state} {...this.props}></ComposedComponent>
                     }
                 </div>
             )

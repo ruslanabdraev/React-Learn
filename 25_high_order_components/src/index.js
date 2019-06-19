@@ -1,9 +1,9 @@
 import React from 'react'
 import {render} from 'react-dom'
-import RandomMeUsers from '../components/RandomMeUsers';
+import App from '../components/App';
 
 window.React = React
 render(
-    <RandomMeUsers count={10} />,
+    <App></App>,
     document.getElementById("react-container")
 )
