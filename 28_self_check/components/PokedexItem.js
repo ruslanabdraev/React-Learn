@@ -1,4 +1,5 @@
 import React from "react";
+import '../stylesheets/Style.css'
 
 export default function PokedexItem({ item, details, OnClick = f => f }) {
   return details.name === item.name ? (
@@ -7,7 +8,7 @@ export default function PokedexItem({ item, details, OnClick = f => f }) {
       <p>Name: {details.name}</p>
       <p>Weight: {details.weight}</p>
       <p>Height: {details.height}</p>
-      <p>front_default: {details.front_default}</p>
+      <p><img src={details.front_default}></img></p>
       </b>
     </div>
   ) : (
