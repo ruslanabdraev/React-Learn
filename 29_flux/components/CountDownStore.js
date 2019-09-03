@@ -15,6 +15,7 @@ class CountDownStore extends EventEmitter{
 
     dispatch(payload){
         const {type, count} = payload.action
+        
         switch(type){
             case 'TICK':
                 this._count = this._count -1

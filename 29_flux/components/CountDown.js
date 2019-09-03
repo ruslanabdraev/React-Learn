@@ -1,6 +1,6 @@
 const CountDown = ({count, tick, reset}) =>{
     if (count){
-        setTimeout(()=>tick(), 1000)
+        setTimeout(()=>tick(count), 1000)
     }
 
     return (count)? 

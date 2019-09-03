@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-//import App from '../components/App';
-
+//import render from 'react-dom'
 
 window.React = React
 // render(
