@@ -11,61 +11,63 @@ import C from '../reducers/constants'
 //     document.getElementById("react-container")
 // )
 
-const action = {
+
+import {createStore, combineReducers} from 'redux'
+
+const initialState = {
+    colors: [
+        {
+            id: "3315e1p5-3abl-0p523-30e4-8001l8yf3036",
+            title: "Rad Red",
+            color: "#FF0000",
+            rating: 3,
+            timestamp: "Sat Mar 12 2016 16:12:09 GMT-0800 (PST)"
+        },
+        {
+            id: "3315e1p5-3abl-0p523-30e4-8001l8yf4457",
+            title: "Crazy Green",
+            color: "#00FF00",
+            rating: 0,
+            timestamp: "Fri Mar 11 2016 12:00:00 GMT-0800 (PST)"
+        },
+        {
+            id: "3315e1p5-3abl-0p523-30e4-8001l8yf2412",
+            title: "Big Blue",
+            color: "#0000FF",
+            rating: 5,
+            timestamp: "Thu Mar 10 2016 01:11:12 GMT-0800 (PST)"
+        }
+    ]
+}
+
+// const store = createStore(
+//     combineReducers({colors, sort}),
+//     initialState
+// )
+
+const store = createStore(
+    combineReducers({colors, sort}),
+    (localStorage['redux-store'])?
+    JSON.parse(localStorage['redux-store']) : {}
+)
+
+store.subscribe(()=>
+    localStorage['redux-store']  = JSON.stringify(store.getState())
+)
+
+// store.subscribe(()=>
+//     console.log('color count: ', store.getState().colors.length)
+// )
+
+console.log('current color count', store.getState().colors.length)
+console.log('current state', store.getState())
+
+let uniqueId = 0
+
+store.dispatch({
     type: "ADD_COLOR",
-    id: "4243e1p0-9abl-4e90-95p4-8001l8yf3036",
-    color: "#0000FF",
-    title: "Big Blue",
-    timestamp: "Thu Mar 10 2016 01:11:12 GMT-0800 (PST)"
-}
-
-//console.log(color({}, action))
-
-//===================================================================
-const existingColor = {
-    id: "4243e1p0-9abl-4e90-95p4-8001l8yf3036",
-    title: "Big Blue",
-    color: "#0000FF",
-    timestamp: "Thu Mar 10 2016 01:11:12 GMT-0800 (PST)",
-    rating: 0
-}
-
-const newAction = {
-    type: "RATE_COLOR",
-    id: "4243e1p0-9abl-4e90-95p4-8001l8yf3036",
-    rating: 4
-}
-
-//console.log(color(existingColor, newAction))
-
-//====================================================================
-const currentColors = [{
-        id: "9813e2p4-3abl-2e44-95p4-8001l8yf3036",
-        title: "Berry Blue",
-        color: "#000066",
-        rating: 0,
-        timestamp: "Thu Mar 10 2016 01:11:12 GMT-0800 (PST)"
-    }]
-
-const actionForCurrentColors = {
-    type: "ADD_COLOR",
-    id: "5523e7p8-3ab2-1e35-95p4-8001l8yf3036",
+    id: uniqueId++,
     title: "Party Pink",
     color: "#F142FF",
-    timestamp: "Thu Mar 10 2016 01:11:12 GMT-0800 (PST)"
-}
-
-// console.log('colors before adding action')
-// console.log(currentColors)
-
-// console.log('current colors:')
-// console.log(colors(currentColors, actionForCurrentColors))
-
-//====================================================================
-
-const state = "SORTED_BY_DATE"
-const actionSort = {
-    type: "SORT_COLORS",
-    sortBy: "SORTED_BY_TITLE"
-}
-console.log(sort(state, actionSort) ) // "SORTED_BY_TITLE"
+    timestamp: new Date().toString()
+})
