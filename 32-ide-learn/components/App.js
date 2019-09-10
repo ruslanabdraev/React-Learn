@@ -22,7 +22,9 @@ class App extends Component{
         this.state = { source: "VisualStudio.jpg" }
     }
 
-    changeScreen(source){
+    changeScreen(e, source){
+        e.preventDefault()
+        
         if(source === "VisualStudio.jpg"){
             this.setState({source: "VisualStudio2.jpg"})
         }
@@ -34,8 +36,8 @@ class App extends Component{
 
     render()
     {
-        return <Hotkeys keyName="ctrl+m" onKeyDown={(keyName, e, handle)=>{
-                this.changeScreen(this.state.source)
+        return <Hotkeys keyName="ctrl+k,ctrl+p" onKeyDown={(keyName, e, handle)=>{
+                this.changeScreen(e, this.state.source)
                 }}>
                 <IDEList data={idelistData}></IDEList>
                 <br/>
